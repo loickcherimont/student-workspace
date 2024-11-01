@@ -4,14 +4,13 @@
  */
 package com.example.servlets;
 
-import com.example.beans.Student;
+import com.example.beans.CStudents;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 
 /**
  *
@@ -43,11 +42,12 @@ public class Students extends HttpServlet {
             throws ServletException, IOException {
 
         // Create 3 students and add them to an array list
-        ArrayList<Student> students = new ArrayList<>();
-
-        students.add(new Student(1, "Théo", "Martins", "theo.martin@hotmail.fr", "0123456789", 22));
-        students.add(new Student(2, "Lionel", "Techer", "lionel.techer@gmail.com", "0987654321", 27));
-        students.add(new Student(3, "Benjamin", "Doe", "doe-benjamin@outlook.fr", "001122334455", 24));
+        CStudents students = new CStudents();
+//        List<Student> students = new ArrayList<>();
+//
+//        students.add(new Student(1, "Théo", "Martins", "theo.martin@hotmail.fr", "0123456789", 22));
+//        students.add(new Student(2, "Lionel", "Techer", "lionel.techer@gmail.com", "0987654321", 27));
+//        students.add(new Student(3, "Benjamin", "Doe", "doe-benjamin@outlook.fr", "001122334455", 24));
 
         request.setAttribute("students", students);
 
@@ -65,6 +65,12 @@ public class Students extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        CStudents students = new CStudents();
+        students.addNewStudent(request);
+        
+        request.setAttribute("students", students);
+        
+        request.getRequestDispatcher("/WEB-INF/jsp/students.jsp").forward(request, response);
     }
 
     /**

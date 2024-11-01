@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,5 +7,6 @@
     <body>
         <h1>Main Page</h1>
         <%@include file="header.jsp" %>
+        <p>Welcome in the registration management!</p>
     </body>
 </html>
