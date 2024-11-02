@@ -12,21 +12,36 @@ import jakarta.servlet.http.HttpServletRequest;
  */
 public class ConnectionForm {
 
-    private String result;
+    private String username, password;
 
-    public void checkLogins(HttpServletRequest request) {
-        String login = request.getParameter("login");
-        String password = request.getParameter("pass");
-        if (login.equals("admin") && password.equals("admin123")) {
-            result = "You're connected!";
-        } else {
-            result = "Wrong login/password!";
-        }
-        
-        System.out.println(result);
+    public ConnectionForm(HttpServletRequest request) {
+        username = request.getParameter("username");
+        password = request.getParameter("password");
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    // ???? Maybe avoid to do that
+    public String getPassword() {
+        return password;
     }
     
-    public String getResult() {
-        return result;
+    public boolean isCorrect() {
+        return username.equals("admin") && password.equals("admin123");
     }
 }
+
+
+/*
+        <form method="POST" action="form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" />
+            <br/>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" />
+            
+            <input type="submit" />
+        </form>
+ */

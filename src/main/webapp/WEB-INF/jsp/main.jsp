@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Main Page</h1>
-        <%@include file="header.jsp" %>
-        <p>Welcome in the registration management!</p>
+        <p>Welcome on visitor page</p>
+        <a href="/StudentWorkspace/form">login</a>
     </body>
 </html>

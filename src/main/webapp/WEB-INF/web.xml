@@ -37,6 +37,28 @@
         <servlet-name>Form</servlet-name>
         <url-pattern>/form</url-pattern>
     </servlet-mapping>
+    
+    
+    <!-- Admin session -->
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>com.example.servlets.Admin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Logout admin session -->
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>com.example.servlets.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/admin/logout</url-pattern>
+    </servlet-mapping>
+    
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>

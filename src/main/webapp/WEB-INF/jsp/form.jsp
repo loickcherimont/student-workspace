@@ -6,17 +6,19 @@
     </head>
     <body>
         <h1>Form</h1>
-        <%@include file="header.jsp" %>
+        <nav>
+            <a href="/StudentWorkspace/">Home</a>
+        </nav>
         
-        <c:if test="${!empty form.result}">
+<%--        <c:if test="${!empty form.result}">
             <p><c:out value="${form.result}">Result will appear here...</c:out></p>
-        </c:if>
-        <form method="POST" action="/StudentWorkspace/form">
-            <label for="login">Login: </label>
-            <input type="text" id="login" name="login" />
+        </c:if>--%>
+        <form method="POST" action="form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" />
             <br/>
-            <label for="pass">Password:</label>
-            <input type="password" id="pass" name="pass" />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" />
             
             <input type="submit" />
         </form>

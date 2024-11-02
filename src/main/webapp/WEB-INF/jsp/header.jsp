@@ -1,10 +1,9 @@
         <header>
             <nav>
                 <ul>
-                    <li><a href="/StudentWorkspace/">Home</a></li>
-                    <li><a href="/StudentWorkspace/students">Students</a></li>
-                    <li><a href="/StudentWorkspace/about">About</a></li>
-                    <li><a href="/StudentWorkspace/form">Form</a></li>
+                    <li><a href="/StudentWorkspace/admin/">Home</a></li>
+                    <li><a href="/StudentWorkspace/admin/students">Students</a></li>
+                    <li><a href="/StudentWorkspace/admin/about">About</a></li>
                 </ul>
             </nav>
         </header>
