@@ -14,22 +14,6 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Students</servlet-name>
-        <servlet-class>com.example.servlets.Students</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Students</servlet-name>
-        <url-pattern>/students</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>About</servlet-name>
-        <servlet-class>com.example.servlets.About</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>About</servlet-name>
-        <url-pattern>/about</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>Form</servlet-name>
         <servlet-class>com.example.servlets.Form</servlet-class>
     </servlet>
@@ -47,6 +31,25 @@
     <servlet-mapping>
         <servlet-name>Admin</servlet-name>
         <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <!-- Students -->
+    <servlet>
+        <servlet-name>Students</servlet-name>
+        <servlet-class>com.example.servlets.Students</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Students</servlet-name>
+        <url-pattern>/admin/students</url-pattern>
+    </servlet-mapping>
+    
+    <!-- About -->
+    <servlet>
+        <servlet-name>About</servlet-name>
+        <servlet-class>com.example.servlets.About</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>About</servlet-name>
+        <url-pattern>/admin/about</url-pattern>
     </servlet-mapping>
     
     <!-- Logout admin session -->

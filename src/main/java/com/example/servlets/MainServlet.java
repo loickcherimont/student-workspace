@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author loickcherimont
  */
-@WebServlet(name = "MainServlet", urlPatterns = {"/main-servlet"})
+@WebServlet(name = "MainServlet", urlPatterns = {"/"})
 public class MainServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -32,7 +32,7 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request, response);
         
     }
 

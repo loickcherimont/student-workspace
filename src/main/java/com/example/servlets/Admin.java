@@ -7,10 +7,10 @@ package com.example.servlets;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -31,18 +31,18 @@ public class Admin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Cookie[] cookies = request.getCookies();
-        if(cookies != null) {
-            for(Cookie cookie: cookies) {
-                System.out.printf("Cookie-name: %s | Value: %s\n", cookie.getName(), cookie.getValue());
-                if(cookie.getName().equals("cookieName") && cookie.getValue().equals("foo")) {
-                    request.getRequestDispatcher("/WEB-INF/jsp/admin.jsp").forward(request, response);
-                }
-            }
-            response.sendRedirect("/StudentWorkspace/form");
+        // Fetch the existing session
+        HttpSession session = request.getSession(false); // Set false to use an existing session
+        String sessionName = (String) session.getAttribute("sessionName");
+        
+        
+
+        if(sessionName != null) {
+            // Execute admin admin.jsp if OK
+            request.getRequestDispatcher("/WEB-INF/jsp/admin.jsp").forward(request, response);
             return;
-            
         } else {
+            // Redirect user to connection page if session is null
             response.sendRedirect("/StudentWorkspace/form");
             return;
         }

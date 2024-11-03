@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
  */
 public class ConnectionForm {
 
-    private String username, password;
+    private String username, password, error;
 
     public ConnectionForm(HttpServletRequest request) {
         username = request.getParameter("username");
@@ -28,20 +28,16 @@ public class ConnectionForm {
         return password;
     }
     
+    public String getError() {
+        return error;
+    }
+    
+    public void setError(String text) {
+        error = text;
+    }
+    
     public boolean isCorrect() {
-        return username.equals("admin") && password.equals("admin123");
+        boolean invalidCredentials = username.equals("admin") && password.equals("admin123");
+        return invalidCredentials;
     }
 }
-
-
-/*
-        <form method="POST" action="form">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" />
-            <br/>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" />
-            
-            <input type="submit" />
-        </form>
- */

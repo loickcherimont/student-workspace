@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -41,17 +42,29 @@ public class Students extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Create 3 students and add them to an array list
-        CStudents students = new CStudents();
+        HttpSession session = request.getSession(false); // Set false to use an existing session
+        String sessionName = (String) session.getAttribute("sessionName");
+
+        if (sessionName != null) {
+
+            // Create 3 students and add them to an array list
+            CStudents students = new CStudents();
 //        List<Student> students = new ArrayList<>();
 //
 //        students.add(new Student(1, "Théo", "Martins", "theo.martin@hotmail.fr", "0123456789", 22));
 //        students.add(new Student(2, "Lionel", "Techer", "lionel.techer@gmail.com", "0987654321", 27));
 //        students.add(new Student(3, "Benjamin", "Doe", "doe-benjamin@outlook.fr", "001122334455", 24));
+            // Execute admin about.jsp if OK
+            request.setAttribute("students", students);
 
-        request.setAttribute("students", students);
+            request.getRequestDispatcher("/WEB-INF/jsp/students.jsp").forward(request, response);
+            return;
+        } else {
+            // Redirect user to connection page if session is null
+            response.sendRedirect("/StudentWorkspace/form");
+            return;
+        }
 
-        request.getRequestDispatcher("/WEB-INF/jsp/students.jsp").forward(request, response);
     }
 
     /**
@@ -67,9 +80,9 @@ public class Students extends HttpServlet {
             throws ServletException, IOException {
         CStudents students = new CStudents();
         students.addNewStudent(request);
-        
+
         request.setAttribute("students", students);
-        
+
         request.getRequestDispatcher("/WEB-INF/jsp/students.jsp").forward(request, response);
     }
 

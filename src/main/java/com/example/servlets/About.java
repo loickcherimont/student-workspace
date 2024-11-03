@@ -5,12 +5,12 @@
 package com.example.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -31,7 +31,19 @@ public class About extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/about.jsp").forward(request, response);
+        
+        HttpSession session = request.getSession(false);
+        String sessionName = (String) session.getAttribute("sessionName");
+
+        if (sessionName != null) {
+            // Execute admin about.jsp if OK
+            request.getRequestDispatcher("/WEB-INF/jsp/about.jsp").forward(request, response);
+            return;
+        } else {
+            // Redirect user to connection page if session is null
+            response.sendRedirect("/StudentWorkspace/form");
+            return;
+        }
 
     }
 

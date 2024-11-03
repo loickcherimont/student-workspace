@@ -8,10 +8,10 @@ import com.example.forms.ConnectionForm;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -48,18 +48,17 @@ public class Form extends HttpServlet {
             throws ServletException, IOException {
         ConnectionForm form = new ConnectionForm(request);
         if (form.isCorrect()) {
-            // Handle cookie for user connection
-            Cookie cookie = new Cookie("cookieName", "foo");
-            cookie.setMaxAge(60 * 60);
-            response.addCookie(cookie);
-            // End - Handle cookie for user connection
-            request.setAttribute("form", form);
 
-//            request.getRequestDispatcher("/StudentWorkspace/admin/").forward(request, response);
+            // Handle session for user connection
+            HttpSession session = request.getSession(true); // Set true to create new session
+            session.setAttribute("sessionName", "mySession");
             response.sendRedirect("/StudentWorkspace/admin");
-        } else {
-            System.err.println("Invalid credentials!");
             return;
+
+        } else {
+            form.setError("Invalid credentials!");
+            request.setAttribute("form", form);
+            request.getRequestDispatcher("/WEB-INF/jsp/form.jsp").forward(request, response);
         }
     }
 

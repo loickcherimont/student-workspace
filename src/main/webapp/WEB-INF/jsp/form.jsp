@@ -9,10 +9,9 @@
         <nav>
             <a href="/StudentWorkspace/">Home</a>
         </nav>
-        
-<%--        <c:if test="${!empty form.result}">
-            <p><c:out value="${form.result}">Result will appear here...</c:out></p>
-        </c:if>--%>
+        <c:if test="${!empty form.error}">
+            <p style="color:red;">${form.error}</p>
+        </c:if>
         <form method="POST" action="form">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" />
