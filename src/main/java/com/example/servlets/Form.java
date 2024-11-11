@@ -73,3 +73,15 @@ public class Form extends HttpServlet {
     }// </editor-fold>
 
 }
+
+/*
+db : student_workspace
+- Utiliser MySQL pour stocker des données : login, students
+- Comment hasher en Java, le mdp
+- Comment appeler le contenu d'une variable d'env (.env)
+
+- tables : login, students
+
+
+
+*/

@@ -4,8 +4,9 @@
  */
 package com.example.servlets;
 
+import com.example.config.Config;
+import com.example.db.DBConfig;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -31,6 +32,12 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        DBConfig db = new DBConfig();
+        Config.loadEnvVars();
+        
+        // Connect to DB and query DB
+        db.loadDB();
         
         request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request, response);
         
