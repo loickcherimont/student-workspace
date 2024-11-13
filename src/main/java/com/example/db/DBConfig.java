@@ -4,7 +4,7 @@
  */
 package com.example.db;
 
-import com.example.config.Config;
+//import com.example.config.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,9 +15,9 @@ import java.sql.SQLException;
  */
 public class DBConfig {
 
-    private Connection connection = null;
-    private String dbUser = "";
-    private String dbPassword = "";
+    private Connection connexion = null;
+//    private String dbUser = "";
+//    private String dbPassword = "";
 
     // Charger la base de données
     public void loadDB() {
@@ -32,8 +32,8 @@ public class DBConfig {
 
         // Connect to DB
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/student_workspace?useSSL=FALSE", "root", "YOUR_DB_PASSWORD");
-            System.out.println("Connection with DB: OK!");
+            connexion = DriverManager.getConnection("jdbc:mysql://localhost/sample?useSSL=true", "YOUR_DBUSERNAME", "YOUR_DBPASSWORD");
+            System.out.println("Connection with DB: OK!" + connexion);
         } catch (SQLException e) {
             System.err.println("SQLException: " + e.getMessage());
             System.err.println("SQLState: " + e.getSQLState());
